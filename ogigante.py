@@ -3,6 +3,7 @@ from flask import Flask, request, session, g, redirect, url_for, \
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import or_, and_, desc
 from coaster.sqlalchemy import TimestampMixin, IdMixin
+import os
 
 # configuration
 # DATABASE = '/tmp/flaskr.db'
@@ -16,7 +17,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('SETTINGS_FILE', silent=True)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://@localhost/ogigante'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('HEROKU_POSTGRESQL_GREEN_URL', 'postgresql://@localhost/ogigante')
 db = SQLAlchemy(app)
 
 
