@@ -37,6 +37,7 @@ class Entry(IdMixin, TimestampMixin, db.Model):
         self.kind = kind
         self.title = title
         self.text = text
+        self.approved = approved
 
     def __repr__(self):
         return '<Entry [{}] {}>'.format(self.kind, self.title)
