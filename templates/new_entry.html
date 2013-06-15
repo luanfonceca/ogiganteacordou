@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if success %}
+    <div class="alert alert-success">
+      Recebemos o seu envio, em breve as informação estarão disponíveis para todos.
+    </div>
+  {% elif fail %}
+    <div class="alert alert alert-error">
+      Houve um problema com o seu envio, tente novamente.
+    </div>
+  {% endif %}
+  <h3>Envie novas informações</h3>
+  <p>Envie aqui informação sobre as manifestações: vídeos, datas, links de artigos</p>
+  
+  <form class="form-horizontal" method="POST">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label">Tipo de conteúdo:</label>
+        <div class="controls">
+          <select name="kind">
+            <option value="video">Video</option>
+            <option value="evento">Novo Evento</option>
+            <option value="link">Link de blog ou notícia</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Titulo:</label>
+        <div class="controls">
+          <input type="text" name="title" class="span5" required/><br/>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">Link para conteúdo:</label>
+        <div class="controls">
+          <input type="text" name="text" class="span5" required/><br/>
+          <span class="help-block">ex: se for um evento, mande um link para o evento no facebook,<br/> 
+            se for um vídeo, mande o link para youtube.</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei">
+          </script>
+          <noscript>
+           <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei"
+               height="300" width="500" frameborder="0"></iframe><br>
+          </noscript>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <br/>
+  <br/>
+  <h4>Para quem trabalha com computação</h4>
+  <p>Contribua para o projeto em: <a href="https://github.com/filipeximenes/ogiganteacordou">https://github.com/filipeximenes/ogiganteacordou</a></p>
+{% endblock %}

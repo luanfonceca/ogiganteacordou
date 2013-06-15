@@ -4,6 +4,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import or_, and_, desc
 from coaster.sqlalchemy import TimestampMixin, IdMixin
 import os
+from recaptcha.client import captcha
 
 # configuration
 # DATABASE = '/tmp/flaskr.db'
@@ -16,6 +17,8 @@ PASSWORD = 'default'
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('SETTINGS_FILE', silent=True)
+
+RECAPTCHA_SECRETE = os.environ.get('RECAPTCHA_SECRETE')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('HEROKU_POSTGRESQL_GREEN_URL', 'postgresql://@localhost/ogigante')
 db = SQLAlchemy(app)
@@ -61,9 +64,26 @@ def events():
     return render_template('events.html', entries=entries)
 
 
-@app.route('/novo')
+@app.route('/novo', methods=['GET', 'POST'])
 def new_entry():
-    pass
+    if request.method == 'GET':
+        return render_template('new_entry.html')
+    else:
+        resp = captcha.submit(
+            request.form['recaptcha_challenge_field'],
+            request.form['recaptcha_response_field'],
+            RECAPTCHA_SECRETE,
+            request.remote_addr
+            )
+
+        if resp.is_valid:
+            entry = Entry(request.form['kind'], request.form['title'], request.form['text'])
+            db.session.add(entry)
+            db.session.commit()
+            return render_template('new_entry.html', success=True)
+        else:
+            return render_template('new_entry.html', fail=True, data=request.form)
+        
 
 
 if __name__ == '__main__':
