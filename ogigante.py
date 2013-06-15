@@ -33,7 +33,7 @@ class Entry(IdMixin, TimestampMixin, db.Model):
     approved = db.Column(db.Boolean, default=False)
 
 
-    def __init__(self, kind, title, text):
+    def __init__(self, kind, title, text, approved=False):
         self.kind = kind
         self.title = title
         self.text = text
