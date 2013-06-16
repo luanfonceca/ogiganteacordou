@@ -7,7 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^static/(?P.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    url(r'^static/(.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^$', 'core.views.index', name='index'),
     url(r'^eventos$', 'core.views.events', name='events'),
     url(r'^novo$', 'core.views.new_entry', name='new_entry'),
