@@ -3,7 +3,7 @@ from os.path import abspath, dirname, join
 
 PROJECT_ROOT = dirname(abspath(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 RECAPTCHA_SECRET = os.environ.get('RECAPTCHA_SECRETE')
