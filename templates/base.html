@@ -12,44 +12,6 @@
     </style>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap-responsive.min.css') }}">
 
-    <style type="text/css">
-      /* Sticky footer styles
-      -------------------------------------------------- */
-      html,
-      body {
-        height: 100%;
-        /* The html and body elements cannot have any padding or margin. */
-      }
-
-      /* Wrapper for page content to push down footer */
-      #wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
-      }
-
-      /* Set the fixed height of the footer here */
-      #push,
-      #footer {
-        height: 60px;
-      }
-      #footer {
-        background-color: #f5f5f5;
-      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
-    </style>
-
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -58,6 +20,7 @@
     <!-- Fav and touch icons -->
   </head>
   <body>
+    <div id="fb-root"></div>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -70,18 +33,13 @@
         </div>
       </div>
     </div>
-    <div id="wrap">
-      <div class="container">
-        {% block content %}{% endblock %}
-      </div>
-      <div id="push"></div>
+    <div class="container span8">
+      {% block content %}{% endblock %}
     </div>
-    <div id="footer">
-      <div class="container">
-        <p class"muted credit">
-          <div class="fb-like" data-href="http://ogiganteacordou.org/" data-send="false" data-width="450" data-show-faces="true"></div>
-        </p>
-      </div>
+    <div class="container span4">
+      <div class="fb-like" data-href="http://ogiganteacordou.org/" data-send="false" data-width="450" data-show-faces="true"></div>
+      <a class="twitter-timeline" href="https://twitter.com/search?q=%23ogiganteacordou" data-widget-id="346326213758967808">Tweets about "#ogiganteacordou"</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </div>
 
     <script>
@@ -93,7 +51,6 @@
       ga('create', 'UA-41784261-1', 'ogiganteacordou.org');
       ga('send', 'pageview');
     </script>
-    <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
