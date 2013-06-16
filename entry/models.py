@@ -11,3 +11,6 @@ class Entry(TimeStampedModel):
 
     def __unicode__(self):
         return '<Entry [{}] {}>'.format(self.kind, self.title)
+
+    def is_video(self):
+        return self.kind == 'video'

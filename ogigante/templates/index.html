@@ -18,12 +18,12 @@
         )
       {% endif %}
     </h4>
-    {% if entry.kind == 'link' or  'evento' %}
-      <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
-    {% elif entry.kind == 'video' %}
+    {% if entry.is_video %}
       <iframe id="ytplayer" type="text/html" width="640" height="390"
         src="{{ entry.text }}"
         frameborder="0"></iframe>
+    {% else %}
+      <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
     {% endif %}
   {% endfor %}
 {% endblock %}
