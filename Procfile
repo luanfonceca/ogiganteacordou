@@ -1,1 +1,1 @@
-web: gunicorn ogigante:app
+web: gunicorn ogigante.wsgi
