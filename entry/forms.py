@@ -4,8 +4,8 @@ from django import forms
 from .models import Entry
 
 TIPOS = [
-    ('video', u'Vídeo'),
     ('link', 'Link'),
+    ('video', u'Vídeo'),
     ('evento', 'Evento')
 ]
 
