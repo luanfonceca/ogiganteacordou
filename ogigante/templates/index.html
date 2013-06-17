@@ -1,28 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% load url from future %}
   <h1>{% block now_showing %}Últimas{% endblock %}</h1>
   {% for entry in entries %}
-    
-    <h3>
-      [{{ entry.kind }}] {{entry.title}}
-    </h3>
-    <h4>
-      {% if show_status %}
-        ( id: {{ entry.id }}
-        {% if entry.approved == False %}
-          - <span style="color: red">ainda não aprovado</span>
-        {% else %}
-          - <span style="color: green">aprovado</span>
-        {% endif %}
-        )
-      {% endif %}
-    </h4>
     {% if entry.is_video %}
+      <h3>
+        [{{ entry.kind }}] <a href="{% url "entry" entry.id %}">{{entry.title}}</a>
+      </h3>
       <iframe id="ytplayer" type="text/html" width="640" height="390"
         src="{{ entry.text }}"
         frameborder="0"></iframe>
     {% else %}
+      <h3>
+        [{{ entry.kind }}] {{entry.title}}
+      </h3>
       <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
     {% endif %}
   {% endfor %}
