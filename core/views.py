@@ -1,15 +1,32 @@
 #coding: utf-8
-from entry.models import Entry
-from django.shortcuts import render, redirect
-from entry.forms import NewEntryForm
-from recaptcha.client import captcha
+
+from django.shortcuts import render
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from recaptcha.client import captcha
+
+from entry.models import Entry
+from entry.forms import NewEntryForm
 
 
 def index(request):
     context = {}
-    context['entries'] = Entry.objects.filter(
-        approved=True).order_by('-pub_date')
+
+    entries = Entry.objects.filter(approved=True)
+    entries = entries.order_by('-pub_date')
+
+    paginator = Paginator(entries, 25)
+
+    page = request.GET.get('page')
+    try:
+        entries = paginator.page(page)
+    except PageNotAnInteger:
+        entries = paginator.page(1)
+    except EmptyPage:
+        entries = paginator.page(paginator.num_pages)
+
+    context['entries'] = entries
     return render(request, 'index.html', context)
 
 
