@@ -62,6 +62,9 @@ def new_entry(request):
 
     return render(request, 'new_entry.html', context)
 
+def erro404(request):
+    return render(request, '404.html')
+
 def entry(request, entry_pk):
     entry = get_object_or_404(Entry, pk=int(entry_pk))
 

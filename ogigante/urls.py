@@ -5,6 +5,8 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
+handler404 = 'core.views.erro404'
+
 urlpatterns = patterns(
     '',
     url(r'^static/(.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
