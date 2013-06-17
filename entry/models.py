@@ -10,7 +10,7 @@ class Entry(TimeStampedModel):
     approved = models.BooleanField(u'Aprovado')
 
     def __unicode__(self):
-        return '<Entry [{}] {}>'.format(self.kind, self.title)
+        return u'<Entry [{}] {}>'.format(self.kind, self.title)
 
     def is_video(self):
         return self.kind == 'video'
