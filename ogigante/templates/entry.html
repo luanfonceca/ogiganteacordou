@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{entry.title}}</h1>
+    
+    <h3>
+      [{{ entry.kind }}]
+    </h3>
+    <h4>
+      {% if show_status %}
+        ( id: {{ entry.id }}
+        {% if entry.approved == False %}
+          - <span style="color: red">ainda não aprovado</span>
+        {% else %}
+          - <span style="color: green">aprovado</span>
+        {% endif %}
+        )
+      {% endif %}
+    </h4>
+    {% if entry.is_video %}
+      <iframe id="ytplayer" type="text/html" width="640" height="390"
+        src="{{ entry.text }}"
+        frameborder="0"></iframe>
+    {% else %}
+      <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
+    {% endif %}
+{% endblock %}

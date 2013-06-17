@@ -1,6 +1,6 @@
 #coding: utf-8
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -61,3 +61,8 @@ def new_entry(request):
         context['success'] = True
 
     return render(request, 'new_entry.html', context)
+
+def entry(request, entry_pk):
+    entry = get_object_or_404(Entry, pk=int(entry_pk))
+
+    return render(request, 'entry.html', locals())
