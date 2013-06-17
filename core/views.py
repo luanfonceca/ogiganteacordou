@@ -39,7 +39,7 @@ def all_entries(request):
 
 def events(request):
     context = {}
-    context['entries'] = Entry.objects.filter(approved=True,kind='eventos').order_by(
+    context['entries'] = Entry.objects.filter(approved=True, kind='evento').order_by(
         '-pub_date')
     return render(request, 'events.html', context)
 
