@@ -26,4 +26,31 @@
       <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
     {% endif %}
   {% endfor %}
+
+
+<div class="pagination">
+    <span class="step-links">
+        <ul>
+        {% if entries.has_previous %}
+            <li class=""><a href="?page={{ entries.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">&laquo;</a></li>
+        {% endif %}
+
+        {% for num_page in entries.paginator.page_range %}
+            {% if num_page == entries.number %}
+                <li class="active"><a href="#">{{ num_page }}</a></li>
+            {% else %}
+                <li class=""><a href="?page={{ num_page }}">{{ num_page }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if entries.has_next %}
+            <li><a href="?page={{ entries.next_page_number }}">»</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">»</a></li>
+        {% endif %}
+        </ul>
+    </span>
+</div>
 {% endblock %}
