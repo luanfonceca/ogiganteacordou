@@ -2,8 +2,8 @@
 
 {% block meta_tags %}
   <meta property="og:title" content="{{entry.title}}"/>
-  <meta property="og:image" content="http://img.youtube.com/vi/{{ entry.id }}/0.jpg"/>
-  <meta property="og:url" content="http://ogiganteacordou.org/{% url 'entry' entry.id %}"/>
+  <meta property="og:image" content="http://img.youtube.com/vi/{{ entry.get_video_id }}/0.jpg"/>
+  <meta property="og:url" content="http://ogiganteacordou.org{% url 'entry' entry.id %}"/>
   <meta property="og:description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!"/>
 {% endblock %}
 
