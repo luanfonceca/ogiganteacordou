@@ -54,6 +54,7 @@ def new_entry(request):
         settings.RECAPTCHA_SECRET,
         request.META['REMOTE_ADDR']
     )
+
     if resp.is_valid and form.is_valid():
         entry = form.save()
         entry.save()
