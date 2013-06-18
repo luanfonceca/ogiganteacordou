@@ -43,3 +43,8 @@ $("#form_entry").validate({
         $(element).parents('.control-group').removeClass('error');
     }
 });
+
+// NOTE: Force close of the messages
+$('.alert button.close').click(function() {
+    $(this).parent().remove();
+});
