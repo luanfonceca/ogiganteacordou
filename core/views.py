@@ -3,6 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
 
 from recaptcha.client import captcha
 
@@ -61,10 +62,12 @@ def new_entry(request):
             entry = form.save()
             entry.save()
             context['form'] = NewEntryForm()
-            context['success'] = True
+            messages.error(request, u"Recebemos o seu envio, "
+                                    u"em breve as informação "
+                                    u"estarão disponíveis para todos.")
         else:
-            context['fail'] = True
-
+            messages.error(request, u"Houve um problema com o seu envio, "
+                                    u"tente novamente.")
     return render(request, 'new_entry.html', context)
 
 def erro404(request):

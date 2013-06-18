@@ -2,16 +2,6 @@
 {% load bootstrap_toolkit %}
 
 {% block content %}
-  {% if success %}
-    <div class="alert alert-success">
-      Recebemos o seu envio, em breve as informação estarão disponíveis para todos.
-    </div>
-  {% elif fail %}
-    <div class="alert alert alert-error">
-      Houve um problema com o seu envio, tente novamente.
-    </div>
-  {% endif %}
-
   <form class="form-horizontal" id="form_entry" method="POST">
     <fieldset>
       <legend>
