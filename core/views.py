@@ -15,7 +15,7 @@ def index(request):
 
     entries = Entry.objects.filter(approved=True)
 
-    paginator = Paginator(entries, 25)
+    paginator = Paginator(entries, 15)
 
     page = request.GET.get('page')
     try:
