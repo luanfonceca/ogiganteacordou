@@ -48,20 +48,22 @@ def new_entry(request):
     context = {}
     form = NewEntryForm(request.POST or None)
     context['form'] = form
-    resp = captcha.submit(
-        request.POST.get('recaptcha_challenge_field'),
-        request.POST.get('recaptcha_response_field'),
-        settings.RECAPTCHA_SECRET,
-        request.META['REMOTE_ADDR']
-    )
-    # if request.method == 'POST':
-    if resp.is_valid and form.is_valid():
-        entry = form.save()
-        entry.save()
-        context['form'] = NewEntryForm()
-        context['success'] = True
-    else:
-        context['fail'] = True
+
+    if request.method == 'POST':
+        resp = captcha.submit(
+            request.POST.get('recaptcha_challenge_field'),
+            request.POST.get('recaptcha_response_field'),
+            settings.RECAPTCHA_SECRET,
+            request.META['REMOTE_ADDR']
+        )
+
+        if resp.is_valid and form.is_valid():
+            entry = form.save()
+            entry.save()
+            context['form'] = NewEntryForm()
+            context['success'] = True
+        else:
+            context['fail'] = True
 
     return render(request, 'new_entry.html', context)
 
