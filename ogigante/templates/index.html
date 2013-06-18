@@ -1,47 +1,65 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% load url from future %}
-  <h3>{% block now_showing %}{% endblock %}</h3>
-  {% for entry in entries %}
+{% load url from future %}
+{% for entry in entries %}
+    <div class="post">
     {% if entry.is_video %}
-      <h3>
-        [{{ entry.kind }}] <a href="{% url "entry" entry.id %}">{{entry.title}}</a>
-      </h3>
-      <iframe id="ytplayer" type="text/html" width="640" height="390"
+        <h4>
+            [{{ entry.kind }}]
+            <a href="{% url "entry" entry.id %}">
+                {{entry.title}}
+            </a>
+        </h4>
+        <iframe id="ytplayer" type="text/html" width="640" height="390"
         src="{{ entry.text }}"
         frameborder="0"></iframe>
     {% else %}
-      <h3>
-        [{{ entry.kind }}] {{entry.title}}
-      </h3>
-      <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
+        <h4>
+            [{{ entry.kind }}] {{entry.title}}
+        </h4>
+        <a href="{{ entry.text }}" target="_blank">
+            {{ entry.text }}
+        </a>
     {% endif %}
-  {% endfor %}
+    </div>
+{% endfor %}
 
 
 <div class="pagination">
     <span class="step-links">
         <ul>
-        {% if entries.has_previous %}
-            <li class=""><a href="?page={{ entries.previous_page_number }}">&laquo;</a></li>
-        {% else %}
-            <li class="disabled"><a href="#">&laquo;</a></li>
-        {% endif %}
-
-        {% for num_page in entries.paginator.page_range %}
-            {% if num_page == entries.number %}
-                <li class="active"><a href="#">{{ num_page }}</a></li>
+            {% if entries.has_previous %}
+                <li class="">
+                    <a href="?page={{ entries.previous_page_number }}">&laquo;</a>
+                </li>
             {% else %}
-                <li class=""><a href="?page={{ num_page }}">{{ num_page }}</a></li>
+                <li class="disabled">
+                    <a href="#">&laquo;</a>
+                </li>
             {% endif %}
-        {% endfor %}
 
-        {% if entries.has_next %}
-            <li><a href="?page={{ entries.next_page_number }}">»</a></li>
-        {% else %}
-            <li class="disabled"><a href="#">»</a></li>
-        {% endif %}
+            {% for num_page in entries.paginator.page_range %}
+                {% if num_page == entries.number %}
+                    <li class="active">
+                        <a href="#">{{ num_page }}</a>
+                    </li>
+                {% else %}
+                    <li class="">
+                        <a href="?page={{ num_page }}">{{ num_page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if entries.has_next %}
+                <li>
+                    <a href="?page={{ entries.next_page_number }}">»</a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <a href="#">»</a>
+                </li>
+            {% endif %}
         </ul>
     </span>
 </div>

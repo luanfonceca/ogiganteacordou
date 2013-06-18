@@ -1,39 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% if success %}
-    <div class="alert alert-success">
-      Recebemos o seu envio, em breve as informação estarão disponíveis para todos.
-    </div>
-  {% elif fail %}
-    <div class="alert alert alert-error">
-      Houve um problema com o seu envio, tente novamente.
-    </div>
-  {% endif %}
-  <h3>Envie novas informações</h3>
-  <p>Envie aqui informação sobre as manifestações: vídeos, datas, links de artigos</p>
-  
-  <form class="form-horizontal" method="POST">
-    <fieldset>
-      {% csrf_token %}
-      {{ form }}
-      
-      <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei">
-      </script>
-      <noscript>
-       <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei"
-           height="300" width="500" frameborder="0"></iframe><br>
-      </noscript>
+{% if success %}
+<div class="alert alert-success">
+    Recebemos o seu envio, em breve as informação estarão disponíveis para todos.
+</div>
+{% elif fail %}
+<div class="alert alert alert-error">
+    Houve um problema com o seu envio, tente novamente.
+</div>
+{% endif %}
+<p>Envie aqui informação sobre as manifestações: vídeos, datas ou links de artigos</p>
 
-      <div class="control-group">
-        <div class="controls">
-          <button type="submit" class="btn">Enviar</button>
-        </div>
-      </div>
+<form class="form-horizontal" method="POST">
+    <fieldset class="new-entry">
+        <script>var RecaptchaOptions = { theme : 'white' };</script>
+        {% csrf_token %}
+        {{ form }}
+        <br /><br />
+        <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei">
+
+        </script>
+        <noscript>
+            <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei"
+            height="300" width="500" frameborder="0"></iframe>
+        </noscript>
+        <br />
+        <button type="submit" class="btn btn-info">Enviar</button>
     </fieldset>
-  </form>
-  <br/>
-  <br/>
-  <h4>Para quem trabalha com computação</h4>
-  <p>Contribua para o projeto em: <a href="https://github.com/filipeximenes/ogiganteacordou">https://github.com/filipeximenes/ogiganteacordou</a></p>
+</form>
+
+<br /><br />
+<h4>Sabe programar?</h4>
+<p>Contribua para o projeto no <a href="https://github.com/filipeximenes/ogiganteacordou">GitHub!</a></p>
 {% endblock %}
