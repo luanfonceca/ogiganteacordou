@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load bootstrap_toolkit %}
 
 {% block content %}
   {% if success %}
@@ -10,24 +11,34 @@
       Houve um problema com o seu envio, tente novamente.
     </div>
   {% endif %}
-  <h3>Envie novas informações</h3>
-  <p>Envie aqui informação sobre as manifestações: vídeos, datas, links de artigos</p>
-  
-  <form class="form-horizontal" method="POST">
+
+  <form class="form-horizontal" id="form_entry" method="POST">
     <fieldset>
+      <legend>
+        <h3>Envie novas informações</h3>
+        <small>
+          Envie aqui informações sobre as manifestações: vídeos, datas, links de artigos.
+        </small>
+      </legend>
+
       {% csrf_token %}
-      {{ form }}
-      
-      <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei">
-      </script>
-      <noscript>
-       <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei"
-           height="300" width="500" frameborder="0"></iframe><br>
-      </noscript>
+      {{ form|as_bootstrap }}
+
+      <div class="control-group required">
+        <label class="control-label" for="id_text">Captcha</label>
+        <div class="controls">
+          <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei">
+          </script>
+          <noscript>
+           <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei" height="300" width="500" frameborder="0"></iframe><br>
+          </noscript>
+        </div>
+      </div>
 
       <div class="control-group">
-        <div class="controls">
-          <button type="submit" class="btn">Enviar</button>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <a href="{% url 'index' %}" class="btn">Cancelar</a>
         </div>
       </div>
     </fieldset>

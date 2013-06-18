@@ -13,5 +13,9 @@ class NewEntryForm(ModelForm):
     class Meta:
         model = Entry
         exclude = ('approved', )
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'span4'}),
+            'text': forms.TextInput(attrs={'class': 'span4'}),
+        }
 
     kind = forms.ChoiceField(label='Tipo',choices=TIPOS)
