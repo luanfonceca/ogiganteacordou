@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 
+{% block meta_tags %}
+  <meta property="og:title" content="{{entry.title}}"/>
+  <meta property="og:image" content="http://img.youtube.com/vi/{{ entry.id }}/0.jpg"/>
+  <meta property="og:url" content="http://ogiganteacordou.org/{% url 'entry' entry.id %}"/>
+  <meta property="og:description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!"/>
+{% endblock %}
+
 {% block content %}
-  <h3>{{entry.title}}</h3>
-    <h3>
-      [{{ entry.kind }}]
-    </h3>
-    {% if entry.is_video %}
-      <iframe id="ytplayer" type="text/html" width="640" height="390"
-        src="{{ entry.text }}"
-        frameborder="0"></iframe>
-    {% else %}
-      <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
-    {% endif %}
+  <h3>
+    [{{ entry.kind }}] {{entry.title}} <div class="fb-like" data-href="http://ogiganteacordou.org{% url 'entry' entry.id %}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+  </h3>
+  {% if entry.is_video %}
+    <iframe id="ytplayer" type="text/html" width="640" height="390"
+      src="{{ entry.text }}"
+      frameborder="0"></iframe>
+  {% else %}
+    <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
+  {% endif %}
 {% endblock %}

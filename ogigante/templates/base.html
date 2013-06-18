@@ -2,11 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta property="og:title" content="O Gigante Acordou"/>
   <meta property="og:site_name" content="O Gigante Acordou"/>
-  <meta property="og:image" content="http://ogiganteacordou.org/static/img/gigante.png"/>
-  <meta property="og:description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!"/>
-  <meta property="og:url" content="http://ogiganteacordou.org"/>
+
+  {% block meta_tags %}
+    <meta property="og:title" content="O Gigante Acordou"/>
+    <meta property="og:image" content="http://ogiganteacordou.org/static/img/gigante.png"/>
+    <meta property="og:url" content="http://ogiganteacordou.org"/>
+    <meta property="og:description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!"/>
+  {% endblock %}
+  
   <meta property="og:type" content="website"/>
   <meta name="description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!">
   <meta property="fb:app_id" content="473434006074950"/>
