@@ -10,7 +10,9 @@ EntryTypes = [
 
 
 class Entry(TimeStampedModel):
-    kind = models.CharField(u'Tipo', default='link', max_length=400, choices=EntryTypes)
+    kind = models.CharField(
+        u'Tipo', default='link', max_length=400, choices=EntryTypes
+    )
     title = models.CharField(u'Título', max_length=400)
     text = models.CharField(u'Texto', max_length=400)
     approved = models.BooleanField(u'Aprovado')
