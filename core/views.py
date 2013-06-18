@@ -54,11 +54,13 @@ def new_entry(request):
         settings.RECAPTCHA_SECRET,
         request.META['REMOTE_ADDR']
     )
-    if resp and form.is_valid():
+    if resp.is_valid and form.is_valid():
         entry = form.save()
         entry.save()
         context['form'] = NewEntryForm()
         context['success'] = True
+    else:
+        context['fail'] = True
 
     return render(request, 'new_entry.html', context)
 
