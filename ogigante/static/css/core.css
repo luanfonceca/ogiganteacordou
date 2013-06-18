@@ -1,0 +1,74 @@
+.faixa {
+  position: fixed;
+  height: 100%;
+}
+.faixa-amarela {
+  position: fixed;
+  height: 100%;
+  background-color: #ffcc29;
+  width: 70px;
+  left: 85px;
+}
+.faixa-verde {
+  position: fixed;
+  height: 100%;
+  background-color: #00a859;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  -o-box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  width: 85px;
+  left: 0;
+}
+body {
+  font-family: "Open Sans";
+}
+.main {
+  padding: 30px;
+  margin-left: 150px;
+}
+.focus {
+  background: rgba(200, 200, 200, 0.1);
+}
+.menu {
+  margin-top: 150px;
+  font-size: 12px;
+  color: #FFF;
+}
+.menu ul {
+  list-style-type: none;
+  margin-left: -40px;
+  text-align: center;
+}
+.menu li {
+  text-align: center;
+  margin-top: 30px;
+}
+.menu a {
+  color: #FFF;
+}
+.menu a:hover {
+  text-decoration: none;
+}
+.midias {
+  margin-top: 30px;
+}
+.icone {
+  margin-left: 50px;
+  padding-top: 50px;
+  padding-bottom: 6px;
+  width: 58px;
+  background: url(../img/iconesmin.png) no-repeat;
+}
+.icone:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.ultimas {
+  background-position: 10px 0;
+}
+.contribua {
+  background-position: -48px 0;
+}
+.eventos {
+  background-position: -112px 0;
+}
