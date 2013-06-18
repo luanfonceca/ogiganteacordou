@@ -73,3 +73,21 @@ body {
 .eventos {
   background-position: -112px 0;
 }
+.new-entry {
+  padding-top: 30px;
+  text-align: center;
+  width: 320px;
+  margin: 0 auto;
+}
+.new-entry .control-group {
+  margin-left: -110px;
+}
+.new-entry .control-group label {
+  font-weight: bold;
+}
+.captcha {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  margin: 0 auto;
+}
