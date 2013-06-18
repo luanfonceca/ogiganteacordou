@@ -2,7 +2,7 @@
 
 {% block content %}
   {% load url from future %}
-  <h1>{% block now_showing %}Últimas{% endblock %}</h1>
+  <h3>{% block now_showing %}{% endblock %}</h3>
   {% for entry in entries %}
     {% if entry.is_video %}
       <h3>
