@@ -9,3 +9,4 @@ psycopg2==2.5
 recaptcha-client==1.0.6
 stevedore==0.8
 wsgiref==0.1.2
+south==0.8.1
