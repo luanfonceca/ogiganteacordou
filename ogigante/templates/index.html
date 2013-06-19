@@ -2,6 +2,7 @@
 
 {% block content %}
     {% load url from future %}
+    <div class="posts">
     {% for entry in entries %}
         <div class="post">
         {% if entry.is_video %}
@@ -25,6 +26,7 @@
         {% endif %}
         </div>
     {% endfor %}
+    </div>
 
     <div class="pagination">
         <span class="step-links">

@@ -4,7 +4,6 @@ cur.addClass('focus');
 $('html, body').on('keyup', function(e) {
 	e.stopPropagation();
 	var code = (e.keyCode ? e.keyCode : e.which);
-	console.log(code);
 	if (code == 74 || code == 40) {
 		cur.removeClass('focus');
 		if ( cur.next().length > 0 ) cur = cur.next();
