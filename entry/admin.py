@@ -3,8 +3,8 @@ from .models import Entry
 
 
 class EntryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'text', 'approved', )
+    list_display = ('title', 'text', 'approved', 'fixed')
     model = Entry
-    ordering = ['approved']
+    ordering = ['-fixed', 'approved']
 
 admin.site.register(Entry, EntryAdmin)
