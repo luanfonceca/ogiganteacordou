@@ -1,4 +1,4 @@
-var cur = $('.posts div:first-child');
+var cur = $('.posts div.post:first-child');
 cur.addClass('focus');
 
 $('html, body').on('keyup', function(e) {

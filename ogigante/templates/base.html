@@ -5,10 +5,10 @@
   <meta property="og:site_name" content="O Gigante Acordou"/>
 
   {% block meta_tags %}
-    <meta property="og:title" content="O Gigante Acordou"/>
-    <meta property="og:image" content="http://ogiganteacordou.org/static/img/gigante.png"/>
-    <meta property="og:url" content="http://ogiganteacordou.org"/>
-    <meta property="og:description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!"/>
+  <meta property="og:title" content="O Gigante Acordou"/>
+  <meta property="og:image" content="http://ogiganteacordou.org/static/img/gigante.png"/>
+  <meta property="og:url" content="http://ogiganteacordou.org"/>
+  <meta property="og:description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!"/>
   {% endblock %}
   
   <meta property="og:type" content="website"/>
@@ -34,17 +34,20 @@
         <li><a href="{% url 'events' %}"><div class="icone eventos">eventos</div></a></li>
       </ul>
     </nav>
+    <div class="midias">
+      <div class="fb-like" data-href="http://ogiganteacordou.org/" data-send="false" data-width="300" data-show-faces="false" data-layout="button_count"></div>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ogiganteacordou.org/" data-size="small">Tweet</a>
+    </div>
   </div>
 
   <div class="main span9">
     <h1 align="center">#oGiganteAcordou</h1>
     <br />
-    <h1 align="center"><div class="fb-like" data-href="http://ogiganteacordou.org/" data-send="false" data-width="300" data-show-faces="true"></div></h1>
     <br /><br />
     {% block content %}{% endblock %}
   </div>
-  <div class="midias span4">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ogiganteacordou.org/" data-lang="pt" data-size="large">Tweetar</a>
+  <div class="twitter span4">
+
     <br />
     <a class="twitter-timeline" href="https://twitter.com/search?q=%23ogiganteacordou" data-widget-id="346326213758967808">Tweets about "#ogiganteacordou"</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

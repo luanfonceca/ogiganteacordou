@@ -2,15 +2,17 @@
 
 {% block content %}
     {% load url from future %}
-    <div class="posts">
+    <div class="posts span8">
     {% for entry in entries %}
         <div class="post">
         {% if entry.is_video %}
             <h4>
-                [{{ entry.kind }}]
-                <a href="{% url "entry" entry.id %}">
-                    {{entry.title}}
-                </a>
+                <div class="span6 post-title">
+                    [{{ entry.kind }}]
+                    <a href="{% url "entry" entry.id %}">
+                        {{entry.title}}
+                    </a>
+                </div>
                 <div class="fb-like" data-href="http://ogiganteacordou.org{% url 'entry' entry.id %}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
             </h4>
             <iframe id="ytplayer" type="text/html" width="640" height="390"
