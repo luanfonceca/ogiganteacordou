@@ -1,6 +1,7 @@
 #coding: utf-8
 from django.db import models
 from core.models import TimeStampedModel
+import urlparse
 
 EntryTypes = [
     ('link', u'Link'),
@@ -26,3 +27,7 @@ class Entry(TimeStampedModel):
 
     def is_video(self):
         return self.kind == 'video'
+
+    @property
+    def get_video_id(self):
+        return self.text.split('/')[4]
