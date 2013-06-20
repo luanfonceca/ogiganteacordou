@@ -17,12 +17,13 @@ class Entry(TimeStampedModel):
     title = models.CharField(u'Título', max_length=400)
     text = models.CharField(u'Texto', max_length=400)
     approved = models.BooleanField(u'Aprovado')
+    fixed = models.BooleanField(u'Fixo')
 
     class Meta:
-        ordering = ['-pub_date']
+        ordering = ['-fixed', '-pub_date']
 
     def __unicode__(self):
-        return u'<Entry [{}] {}>'.format(self.kind, self.title)
+        return u'[{0}] {1} '.format(self.kind, self.title)
 
     def is_video(self):
         return self.kind == 'video'
