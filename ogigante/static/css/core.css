@@ -6,8 +6,8 @@
   position: fixed;
   height: 100%;
   background-color: #ffcc29;
-  width: 70px;
-  left: 85px;
+  width: 40px;
+  left: 95px;
 }
 .faixa-verde {
   position: fixed;
@@ -17,15 +17,46 @@
   -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
   -o-box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
-  width: 85px;
+  width: 95px;
   left: 0;
 }
+.midias {
+  position: absolute;
+  top: 5px;
+  margin-left: 600px;
+  width: 250px;
+}
+.midias .fb-like {
+  margin-right: 10px;
+}
 body {
+  background: url(../img/bg.png);
   font-family: "Open Sans";
 }
 .main {
   padding: 30px;
-  margin-left: 150px;
+  margin-left: 100px;
+}
+.posts {
+  background-color: #FFF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.posts .post {
+  padding: 30px;
+}
+.posts .post .fb-like {
+  float: right;
+}
+.posts .post iframe {
+  height: 342px;
+  width: 560px;
+}
+.posts .post-title {
+  margin-left: 0;
+}
+.pagination {
+  margin-left: 20px;
 }
 .focus {
   background: rgba(200, 200, 200, 0.1);
@@ -37,7 +68,7 @@ body {
 }
 .menu ul {
   list-style-type: none;
-  margin-left: -40px;
+  margin-left: -35px;
   text-align: center;
 }
 .menu li {
@@ -50,8 +81,11 @@ body {
 .menu a:hover {
   text-decoration: none;
 }
-.midias {
+.twitter {
+  position: fixed;
+  right: 50px;
   margin-top: 30px;
+  margin-bottom: 50px;
 }
 .icone {
   margin-left: 50px;
@@ -71,4 +105,27 @@ body {
 }
 .eventos {
   background-position: -112px 0;
+}
+.new-entry {
+  padding-top: 30px;
+  text-align: center;
+  width: 320px;
+  margin: 0 auto;
+}
+.new-entry .control-group {
+  margin-left: -110px;
+}
+.new-entry .control-group label {
+  font-weight: bold;
+}
+.captcha {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 1100px) {
+  .twitter {
+    display: none;
+  }
 }

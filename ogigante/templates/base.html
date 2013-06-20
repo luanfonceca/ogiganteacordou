@@ -2,12 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta property="og:site_name" content="O Gigante Acordou"/>
+
+  {% block meta_tags %}
+  <meta property="og:title" content="O Gigante Acordou"/>
+  <meta property="og:image" content="http://ogiganteacordou.org/static/img/gigante.png"/>
+  <meta property="og:url" content="http://ogiganteacordou.org"/>
+  <meta property="og:description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!"/>
+  {% endblock %}
+
+  <meta property="og:type" content="website"/>
+  <meta name="description" content="O Brasil está cansado de corrupção e opressão. O gigante acordou!">
+  <meta property="fb:app_id" content="473434006074950"/>
+
   <title>O Gigante Acordou</title>
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ STATIC_URL }}css/core.css">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <a href="https://github.com/filipeximenes/ogiganteacordou"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 9999" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
   <div id="fb-root"></div>
 
   <div class="faixa-amarela">
@@ -16,16 +30,21 @@
     <nav class="menu">
       <ul>
         <li><a href="/"><div class="icone ultimas">últimas</div></a></li>
-        <li><a href="{% url 'new_entry' %}"><div class="icone contribua">contribua</div></a></li>
+        <li><a href="{% url 'new_entry' %}"><div class="icone contribua">envie notícias</div></a></li>
         <li><a href="{% url 'events' %}"><div class="icone eventos">eventos</div></a></li>
       </ul>
     </nav>
   </div>
+  <div class="midias">
+    <div class="fb-like" data-href="http://ogiganteacordou.org/" data-send="false" data-width="300" data-show-faces="false" data-layout="button_count"></div>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ogiganteacordou.org/" data-size="small">Tweet</a>
+  </div>
 
   <div class="main span9">
+    <br />
     <h1 align="center">#oGiganteAcordou</h1>
     {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}">
+      <div class="offset1 alert alert-{{ message.tags }}">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         {{ message }}
       </div>
@@ -33,10 +52,8 @@
 
     {% block content %}{% endblock %}
   </div>
-  <div class="midias span4">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ogiganteacordou.org/" data-lang="pt" data-size="large">Tweetar</a>
-    <div class="fb-like" data-href="http://ogiganteacordou.org/" data-send="false" data-width="300" data-show-faces="true"></div>
-    <br />
+  <div class="twitter span4">
+
     <br />
     <a class="twitter-timeline" href="https://twitter.com/search?q=%23ogiganteacordou" data-widget-id="346326213758967808">Tweets about "#ogiganteacordou"</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -60,10 +77,8 @@
   }(document, 'script', 'facebook-jssdk'));
   </script>
 
-  <!-- Libs -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery.js"></script>
   <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
-
   <script src="{{ STATIC_URL }}js/script.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ from os.path import abspath, dirname, join
 
 PROJECT_ROOT = dirname(abspath(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 RECAPTCHA_SECRET = os.environ.get('RECAPTCHA_SECRETE')
@@ -20,7 +20,9 @@ DATABASES['default'] =  dj_database_url.config()
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['ogiganteacordou.herokuapp.com/']
+ALLOWED_HOSTS = ['ogiganteacordou.herokuapp.com',
+                 'ogiganteacordou.org',
+                 'www.ogiganteacordou.org']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -116,12 +118,13 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
 
-    # External Apps
-    'bootstrap_toolkit',
-
     # Internal Apps
     'core',
     'entry',
+
+    # External Apps
+    'bootstrapform',
+    'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

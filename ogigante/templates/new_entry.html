@@ -1,40 +1,33 @@
 {% extends "base.html" %}
-{% load bootstrap_toolkit %}
+{% load bootstrap %}
 
 {% block content %}
-  <form class="form-horizontal" id="form_entry" method="POST">
-    <fieldset>
-      <legend>
-        <h3>Envie novas informações</h3>
-        <small>
-          Envie aqui informações sobre as manifestações: vídeos, datas, links de artigos.
-        </small>
-      </legend>
+  <div class="container">
+    <br><br><br>
+    <p class="offset1">
+      Envie aqui informação sobre as manifestações: vídeos, datas ou links de artigos</p>
+    <br>
+    <form class="form-horizontal" method="POST" id="form_entry">
+      <fieldset>
+        <script>var RecaptchaOptions = { theme : 'white' };</script>
+        {% csrf_token %}
+        {{ form|bootstrap }}
 
-      {% csrf_token %}
-      {{ form|as_bootstrap }}
-
-      <div class="control-group required">
-        <label class="control-label" for="id_text">Captcha</label>
-        <div class="controls">
-          <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei">
-          </script>
-          <noscript>
-           <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei" height="300" width="500" frameborder="0"></iframe><br>
-          </noscript>
+        <div class="control-group required">
+          <label class="control-label" for="recaptcha_response_field">Captcha</label>
+          <div class="controls">
+            <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei">
+            </script>
+            <noscript>
+                <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Ld25OISAAAAAGDKpHjw_a19k9wII29U4qF-Nwei"
+                height="300" width="500" frameborder="0"></iframe>
+            </noscript>
+          </div>
         </div>
-      </div>
-
-      <div class="control-group">
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Enviar</button>
-          <a href="{% url 'index' %}" class="btn">Cancelar</a>
+        <div class="control-group span4 offset2">
+          <button type="submit" class="btn btn-info btn-block">Enviar</button>
         </div>
-      </div>
-    </fieldset>
-  </form>
-  <br/>
-  <br/>
-  <h4>Para quem trabalha com computação</h4>
-  <p>Contribua para o projeto em: <a href="https://github.com/filipeximenes/ogiganteacordou">https://github.com/filipeximenes/ogiganteacordou</a></p>
+      </fieldset>
+    </form>
+  </div>
 {% endblock %}

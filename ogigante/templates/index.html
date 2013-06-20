@@ -1,48 +1,70 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% load url from future %}
-  <h3>{% block now_showing %}{% endblock %}</h3>
-  {% for entry in entries %}
-    {% if entry.is_video %}
-      <h3>
-        [{{ entry.kind }}] <a href="{% url "entry" entry.id %}">{{entry.title}}</a>
-      </h3>
-      <iframe id="ytplayer" type="text/html" width="640" height="390"
-        src="{{ entry.text }}"
-        frameborder="0"></iframe>
-    {% else %}
-      <h3>
-        [{{ entry.kind }}] {{entry.title}}
-      </h3>
-      <a href="{{ entry.text }}" target="_blank">{{ entry.text }}</a>
-    {% endif %}
-  {% endfor %}
-
-
-<div class="pagination">
-    <span class="step-links">
-        <ul>
-        {% if entries.has_previous %}
-            <li class=""><a href="?page={{ entries.previous_page_number }}">&laquo;</a></li>
+    {% load url from future %}
+    <div class="posts span8">
+    {% for entry in entries %}
+        <div class="post">
+        {% if entry.is_video %}
+            <h4>
+                <div class="span6 post-title">
+                    [{{ entry.kind }}]
+                    <a href="{% url "entry" entry.id %}">
+                        {{entry.title}}
+                    </a>
+                </div>
+                <div class="fb-like" data-href="http://ogiganteacordou.org{% url 'entry' entry.id %}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+            </h4>
+            <iframe id="ytplayer" type="text/html" width="640" height="390"
+            src="{{ entry.text }}"
+            frameborder="0"></iframe>
         {% else %}
-            <li class="disabled"><a href="#">&laquo;</a></li>
+            <h4>
+                [{{ entry.kind }}] {{entry.title}}
+            </h4>
+            <a href="{{ entry.text }}" target="_blank">
+                {{ entry.text }}
+            </a>
         {% endif %}
+        </div>
+    {% endfor %}
+    </div>
 
-        {% for num_page in entries.paginator.page_range %}
-            {% if num_page == entries.number %}
-                <li class="active"><a href="#">{{ num_page }}</a></li>
-            {% else %}
-                <li class=""><a href="?page={{ num_page }}">{{ num_page }}</a></li>
-            {% endif %}
-        {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            <ul>
+                {% if entries.has_previous %}
+                    <li class="">
+                        <a href="?page={{ entries.previous_page_number }}">&laquo;</a>
+                    </li>
+                {% else %}
+                    <li class="disabled">
+                        <a href="#">&laquo;</a>
+                    </li>
+                {% endif %}
 
-        {% if entries.has_next %}
-            <li><a href="?page={{ entries.next_page_number }}">»</a></li>
-        {% else %}
-            <li class="disabled"><a href="#">»</a></li>
-        {% endif %}
-        </ul>
-    </span>
-</div>
+                {% for num_page in entries.paginator.page_range %}
+                    {% if num_page == entries.number %}
+                        <li class="active">
+                            <a href="#">{{ num_page }}</a>
+                        </li>
+                    {% else %}
+                        <li class="">
+                            <a href="?page={{ num_page }}">{{ num_page }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if entries.has_next %}
+                    <li>
+                        <a href="?page={{ entries.next_page_number }}">»</a>
+                    </li>
+                {% else %}
+                    <li class="disabled">
+                        <a href="#">»</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </span>
+    </div>
 {% endblock %}

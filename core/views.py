@@ -15,9 +15,8 @@ def index(request):
     context = {}
 
     entries = Entry.objects.filter(approved=True)
-    entries = entries.order_by('-pub_date')
 
-    paginator = Paginator(entries, 25)
+    paginator = Paginator(entries, 15)
 
     page = request.GET.get('page')
     try:
@@ -33,15 +32,16 @@ def index(request):
 
 def all_entries(request):
     context = {}
-    context['entries'] = Entry.objects.all().order_by('-pub_date')
+    context['entries'] = Entry.objects.all()
     context['show_status'] = True
     return render(request, 'index.html', context)
 
 
 def events(request):
     context = {}
-    context['entries'] = Entry.objects.filter(approved=True, kind='evento').order_by(
-        '-pub_date')
+    context['entries'] = Entry.objects.filter(
+        approved=True, kind='evento'
+    )
     return render(request, 'events.html', context)
 
 

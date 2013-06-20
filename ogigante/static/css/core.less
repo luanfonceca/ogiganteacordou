@@ -10,8 +10,8 @@
 .faixa-amarela {
 	.faixa;
 	background-color: @amarelo;
-	width: 70px;
-	left: 85px;
+	width: 40px;
+	left: 95px;
 }
 
 .faixa-verde {
@@ -21,18 +21,48 @@
 	-webkit-box-shadow: 0 0 12px rgba(0,0,0,0.35);
 	-moz-box-shadow: 0 0 12px rgba(0,0,0,0.35);
 	-o-box-shadow: 0 0 12px rgba(0,0,0,0.35);
-	width: 85px;
+	width: 95px;
 	left: 0;
+}
+.midias {
+	position: absolute;
+	top: 5px;
+	margin-left: 600px;
+	width: 250px;
+	.fb-like {
+		margin-right: 10px;
+	}
 }
 
 body {
+	background: url(../img/bg.png);
 	font-family: "Open Sans";
 }
 .main {
 	padding: 30px;
-	margin-left: 150px;
+	margin-left: 100px;
 }
-
+.posts {
+	background-color: #FFF;
+	border-radius: 10px;
+	.post {
+		padding: 30px;
+		.fb-like {
+			float: right;
+		}
+		iframe {
+			height: 342px;
+			width: 560px;
+		}	
+	}
+	.post-title {
+		margin-left: 0;
+	}
+	margin-bottom: 20px;
+}
+.pagination {
+	margin-left: 20px;
+}
 .focus {
 	background: rgba(200, 200, 200, 0.1);
 }
@@ -43,7 +73,7 @@ body {
 	color: #FFF;
 	ul {
 		list-style-type: none;
-		margin-left: -40px;
+		margin-left: -35px;
 		text-align: center;
 	}
 	li {
@@ -57,12 +87,12 @@ body {
 		text-decoration: none;
 	}
 }
-div {
-	// border: red 1px solid;
-}
 
-.midias {
+.twitter {
+	position: fixed;
+	right: 50px;
 	margin-top: 30px;
+	margin-bottom: 50px;
 }
 .icone {
 	margin-left: 50px;
@@ -70,9 +100,9 @@ div {
 	padding-bottom: 6px;
 	width: 58px;
 	background: url(../img/iconesmin.png) no-repeat;
-}
-.icone:hover {
-	background-color: rgba(255, 255, 255, 0.1);
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
 }
 .ultimas {
 	background-position: 10px 0;
@@ -82,4 +112,30 @@ div {
 }
 .eventos {
 	background-position: -112px 0;
+}
+
+.new-entry {
+	padding-top: 30px;
+	text-align: center;
+	width: 320px;
+	margin: 0 auto;
+	.control-group {
+		label {
+			font-weight: bold;
+		}
+		margin-left: -110px;
+	}
+}
+
+.captcha {
+	margin-top: 20px;
+	height: 150px;
+	width: 350px;
+	margin: 0 auto;
+}
+
+@media only screen and (max-width: 1100px) {
+	.twitter {
+		display: none;
+	}
 }
